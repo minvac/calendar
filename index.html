@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <title>Calendar</title>
+   <style>
+      table {
+         border-collapse: collapse;
+      }
+
+      td {
+         border: 2px solid black;
+         text-align: center;
+         vertical-align: top;
+         font-size: 18px;
+         padding: 10px 120px 50px 10px;
+         font-weight: normal;
+         max-width: 50px !important;
+      }
+
+      span {
+         font-size: 18px;
+      }
+
+      body {
+         font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .flex-container {
+         display: flex;
+         justify-content: space-between;
+         width: 100% !important;
+      }
+
+      .btn-container {
+         display: flex;
+         gap: 10px;
+      }
+
+      .button-4 {
+         appearance: none;
+         background-color: #FAFBFC;
+         border: 1px solid rgba(27, 31, 35, 0.15);
+         border-radius: 6px;
+         box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+         box-sizing: border-box;
+         color: #24292E;
+         cursor: pointer;
+         display: inline-block;
+         font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+         font-size: 14px;
+         font-weight: 500;
+         line-height: 20px;
+         list-style: none;
+         padding: 6px 16px;
+         position: relative;
+         transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+         user-select: none;
+         -webkit-user-select: none;
+         touch-action: manipulation;
+         vertical-align: middle;
+         white-space: nowrap;
+         word-wrap: break-word;
+      }
+
+      .button-4:hover {
+         background-color: #F3F4F6;
+         text-decoration: none;
+         transition-duration: 0.1s;
+      }
+
+      .button-4:disabled {
+         background-color: #FAFBFC;
+         border-color: rgba(27, 31, 35, 0.15);
+         color: #959DA5;
+         cursor: default;
+      }
+
+      .button-4:active {
+         background-color: #EDEFF2;
+         box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+         transition: none 0s;
+      }
+
+      .button-4:focus {
+         outline: 1px transparent;
+      }
+
+      .button-4:before {
+         display: none;
+      }
+
+      .button-4:-webkit-details-marker {
+         display: none;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <div class="calendar">
+         <table>
+            <thead>
+               <tr>
+                  <td colspan="7" style="padding-bottom: 20px;">
+                     <div class="btn-container">
+                        <span id="month_calendar">#Month</span>
+                     </div>
+                     <div class="btn-container">
+                        <span id="year_calendar" style="font-size: 40px;">#Year</span>
+                     </div>
+                     <br>
+                     <div class="btn-container" id="console-menu">
+                        <a class="btn-prev button-4" style="text-decoration: none;">Anterior</a>
+                        <a class="btn-next button-4" style="text-decoration: none;">Siguiente</a>
+                        <span style="color: gray; font-size: 25px;">|</span>
+                        <label for="fontSelector" style="margin-top: 5px;">Selecciona una fuente:</label>
+                        <select id="fontSelector" class="button-4">
+                           <option value="Arial, Helvetica, sans-serif">Arial</option>
+                           <option value="Verdana, Geneva, sans-serif">Verdana</option>
+                           <option value="Tahoma, Geneva, sans-serif">Tahoma</option>
+                           <option value="Times New Roman, Times, serif">Times New Roman</option>
+                           <option value="Georgia, serif">Georgia</option>
+                           <option value="Comic Sans MS, Comic Sans, cursive">Comic Sans MS</option>
+                        </select>
+                        <span style="color: gray; font-size: 25px;">|</span>
+                        <button class="button-4" onclick="printCalendarSheet()">Imprimir</button>
+                     </div>
+                  </td>
+               </tr>
+            </thead>
+            <thead>
+               <tr>
+                  <td style="font-size: 1rem; padding-bottom: 10px;">Lunes</td>
+                  <td style="font-size: 1rem; padding-bottom: 10px;">Martes</td>
+                  <td style="font-size: 1rem; padding-bottom: 10px;">Miércoles</td>
+                  <td style="font-size: 1rem; padding-bottom: 10px;">Jueves</td>
+                  <td style="font-size: 1rem; padding-bottom: 10px;">Viernes</td>
+                  <td style="font-size: 1rem; padding-bottom: 10px;">Sabado</td>
+                  <td style="font-size: 1rem; padding-bottom: 10px;">Domingo</td>
+               </tr>
+            </thead>
+            <tbody id="table_calendar_body">
+               <tr>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+               </tr>
+               <tr>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+               </tr>
+               <tr>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+               </tr>
+               <tr>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+               </tr>
+               <tr>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+               </tr>
+               <tr>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+                  <td>#</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+   <script>
+      document.addEventListener("DOMContentLoaded", function () {
+         let date_now = new Date();
+         let date_first = find_first(date_now);
+         let date_aux = set_day_aux(date_first);
+
+         print_calendar(date_now, date_first, date_aux);
+
+         document.querySelector(".btn-prev").addEventListener("click", function () {
+            date_first.setMonth(date_first.getMonth() - 1);
+            date_aux = set_day_aux(date_first);
+
+            print_calendar(date_now, date_first, date_aux);
+         });
+
+         document.querySelector(".btn-next").addEventListener("click", function () {
+            date_first.setMonth(date_first.getMonth() + 1);
+            date_aux = set_day_aux(date_first);
+
+            print_calendar(date_now, date_first, date_aux);
+         });
+
+         function find_first(date_now) {
+            let date_aux = new Date(date_now);
+            while (date_aux.getDate() != 1) date_aux.setDate(date_aux.getDate() - 1);
+            return date_aux;
+         }
+
+         function set_day_aux(date_first) {
+            let date_aux = new Date(date_first);
+            let day_week_number = date_first.getDay();
+            let aux_day = 0;
+
+            if (day_week_number == 0) aux_day = 6;
+            else aux_day = day_week_number - 1;
+
+            date_aux.setDate(date_aux.getDate() - aux_day);
+            return date_aux;
+         }
+
+         function print_calendar(date_now, date_first, date_aux) {
+            let actual_month = date_first.getMonth();
+            let now_day = date_now.getDate();
+            let now_month = date_now.getMonth();
+            let now_year = date_now.getFullYear();
+            let months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+            document.getElementById("month_calendar").textContent = months[date_first.getMonth()];
+            document.getElementById("year_calendar").textContent = date_first.getFullYear();
+
+            let table_cells = document.querySelectorAll("#table_calendar_body td");
+
+            table_cells.forEach(function (cell) {
+               cell.style.backgroundColor = "white";
+               cell.style.fontSize = "18px";
+               cell.style.fontWeight = "normal";
+               cell.style.fontStyle = "normal";
+               cell.classList.remove();
+               cell.setAttribute("data-select", "0");
+               cell.setAttribute("data-date", date_aux.getDate());
+               cell.setAttribute("data-month", date_aux.getMonth());
+               cell.setAttribute("data-year", date_aux.getFullYear());
+
+               let month_aux = date_aux.getMonth();
+
+               if (actual_month > month_aux) {
+                  cell.textContent = date_aux.getDate();
+                  cell.classList.add("prevMonth");
+                  cell.style.backgroundColor = "silver";
+                  cell.style.fontSize = "12px";
+                  cell.style.fontWeight = "normal";
+                  cell.style.fontStyle = "italic";
+               } else if (actual_month < month_aux) {
+                  cell.textContent = date_aux.getDate();
+                  cell.classList.add("nextMonth");
+                  cell.style.backgroundColor = "silver";
+                  cell.style.fontSize = "12px";
+                  cell.style.fontWeight = "normal";
+                  cell.style.fontStyle = "italic";
+               } else {
+                  cell.style.fontWeight = "bold";
+                  cell.textContent = date_aux.getDate();
+                  cell.classList.add("actualMonth");
+               }
+
+               if (now_day == date_aux.getDate() && now_month == date_aux.getMonth() && now_year == date_aux.getFullYear()) {
+                  cell.textContent = date_aux.getDate();
+                  cell.classList.add("actualDay");
+                  cell.style.backgroundColor = "dodgerblue";
+               }
+
+               date_aux.setDate(date_aux.getDate() + 1);
+            });
+         }
+      });
+
+      let printCalendarSheet = () => {
+         document.getElementById("console-menu").style.visibility = "hidden";
+         window.print();
+         document.getElementById("console-menu").style.visibility = "visible";
+      }
+
+      function changeFontFamily() {
+         var fontSelector = document.getElementById("fontSelector");
+         var selectedFont = fontSelector.options[fontSelector.selectedIndex].value;
+
+         document.body.style.fontFamily = selectedFont;
+      }
+
+      document.getElementById("fontSelector").addEventListener("change", changeFontFamily);
+   </script>
+</body>
+
+</html>
